@@ -5,14 +5,14 @@ A simple Gradle based Semantic Versioning (2.0) facilitator via smart Git taggin
 
 ### Reckoned Version:
 
-1. Printing the calculated version => `./gradlew printVersion`
+1. Printing the calculated (<ins>**insignificant**</ins>) version (__since no scope nor stage were indicated__) => `./gradlew printVersion`
  	* With setting Scope and Stage => `./gradlew -Preckon.scope=minor -Preckon.stage=rc printVersion`
-1. Stamping (creating a local tag) a calculated version => `./gradlew stampVersion`
+1. Stamping (creating a local tag) a calculated (<ins>**insignificant**</ins>) version (__since no scope nor stage were indicated__) => `./gradlew stampVersion`
 	* With setting Scope and Stage => `./gradlew -Preckon.scope=minor -Preckon.stage=rc stampVersion`
-1. Publishing (pushing a tag to remote repository) a calculated version => `./gradlew -Dorg.ajoberstar.grgit.auth.username=<ACCESS_TOKEN> publishVersion`
+1. Publishing (pushing a tag to remote repository) a calculated (<ins>**insignificant**</ins>) version (__since no scope nor stage were indicated__) => `./gradlew -Dorg.ajoberstar.grgit.auth.username=<ACCESS_TOKEN> publishVersion`
 	* With setting Scope and Stage => `./gradlew -Preckon.scope=minor -Preckon.stage=rc -Dorg.ajoberstar.grgit.auth.username=<ACCESS_TOKEN> publishVersion`
 
-### Designated (and applicable (which takes into account both reckoned and designated flavors)) Version:
+### Applicable (*which takes into account both reckoned and designated flavored*) Version:
 
 1. Printing the applicable version => `./gradlew printApplicableVersion`
  	* With setting designated version tag and message => `./gradlew -Pdemo4echo.designatedTagName=9.9.9 -Pdemo4echo.designatedTagMessage="Version for Demo" printApplicableVersion`
