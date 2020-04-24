@@ -4,3 +4,5 @@
 # These are explicitly windows files and should use crlf
 *.bat           text eol=crlf
 
+# Mark specific files that are NOT to be merged (branch specific files)
+branchSpecificConfig.properties merge=ours
