@@ -29,6 +29,6 @@ __Two main Gradle plugins :electric_plug: are used to achieve this functionality
 
 1. Print the most recent version => `./gradlew printLatestVersion`
 
-## <INS>Forking the project to BitBucket:</INS>
+## <INS>Forking :fork_and_knife: the project to BitBucket:</INS>
 - [Forking / Importing a Github repo into Bitbucket](https://medium.com/faun/forking-importing-a-github-repo-into-bitbucket-a8a2adb1ec16)
 - [Forking a Github repo to Bitbucket](https://gist.github.com/sangeeths/9467061)
