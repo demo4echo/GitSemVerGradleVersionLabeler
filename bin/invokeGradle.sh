@@ -1,5 +1,11 @@
 #!/usr/bin/env sh
 
+#
+# This script is intended to be used when the whole repo is used as a sub module,
+# as in this case running the gradle wrapper (gradlew) from the root of the repo,
+# will cause all the git related operations (mainly tagging) to be performed on the sub module itself instead on the main (containing repo).
+#
+
 # Absolute path to this script, e.g. /home/user/bin/foo.sh
 #SCRIPT=$(readlink -f "$0")
 # Absolute path this script is in, thus /home/user/bin
