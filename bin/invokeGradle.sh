@@ -26,3 +26,4 @@ cd $REPO_COPY_DESIGNATED_FOLDER_NAME
 ./gradlew $*
 cd -
 rm -rf ../../$REPO_COPY_DESIGNATED_FOLDER_NAME
+# cd -
