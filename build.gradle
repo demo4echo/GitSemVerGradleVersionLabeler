@@ -58,3 +58,92 @@ project.description = 'A simple Gradle based Semantic Versioning (2.0) facilitat
 // Pre-Defined project properties
 //project.description = 'The Echo demo product'
 project.version = originalProjectVersionObject.toString()
+
+//
+// Works with org.ajoberstar.grgit plugin
+//
+
+task applicableTagCreate {
+	description = 'Tags the current head with the applicable version name'
+
+	def tagName = productTag
+	def tagMessage = null
+
+	doFirst {
+		if (project.hasProperty(CONST_DESIGNATED_TAG_MESSAGE_PROJECT_PROPERTY_NAME) == true && project.ext[CONST_DESIGNATED_TAG_MESSAGE_PROJECT_PROPERTY_NAME].trim().isEmpty() == false) {
+			tagMessage = project.ext[CONST_DESIGNATED_TAG_MESSAGE_PROJECT_PROPERTY_NAME]
+		}
+		else {
+			tagMessage = "Release of ${tagName}"
+		}
+	}
+
+	doLast {
+		grgit.tag.add {
+			name = tagName
+			message = tagMessage
+			force = true
+//			tagger = new Person(vcsUsername,vcsUseremail)
+		}
+
+		println "Applicable tag cretaed: ${productTag}"
+	}
+}
+
+task applicableTagDestroy {
+	description = 'Removes applicable tag from GIT'
+
+	doLast {
+		grgit.tag.remove {
+			names = [productTag]
+		}
+
+		println "Applicable tag destroyed: ${productTag}"
+	}
+}
+
+// Requires the use of "-Dorg.ajoberstar.grgit.auth.username" (with a proper token) for authentication
+task gitPush {
+	description = "Pushes current branch's committed changes to origin repo"
+
+	doLast {
+		grgit.push {
+			tags = true
+			force = true
+//			dryRun = true
+		}
+	}
+}
+
+task gitPull {
+	description = "Pulls origin repo's committed changes to current branch"
+
+	doLast {
+		grgit.pull {
+			rebase = true
+		}
+	}
+}
+
+// Applicable version helpers
+task printApplicableVersion {
+	doLast {
+		// Note: the word 'Manifested' must remain as the Pipeline is using this task and filters the output by this word!
+		println "Manifested version: ${productTag}"
+	}
+}
+task stampApplicableVersion(dependsOn: applicableTagCreate)
+task publishApplicableVersion(dependsOn: [stampApplicableVersion,gitPush]) {
+	gitPush.mustRunAfter stampApplicableVersion
+}
+
+// The most recent version that exists in the VCS (last generated tag)
+task printLatestVersion {
+	doLast {
+		def latestTag = obtainLatestTag()
+		def latestTagName = latestTag.name
+		def latestTagDateTime = latestTag.dateTime
+
+		println "Recent version: ${latestTagName}@${latestTagDateTime}"
+	}
+}
