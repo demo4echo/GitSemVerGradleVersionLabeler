@@ -24,3 +24,7 @@ A simple Gradle based Semantic Versioning (2.0) facilitator via smart Git taggin
 ### Recent Version:
 
 1. Print the most recent version => `./gradlew printLatestVersion`
+
+## <ins>Forking the project to BitBucket:</ins>
+* [Forking / Importing a Github repo into Bitbucket](https://medium.com/faun/forking-importing-a-github-repo-into-bitbucket-a8a2adb1ec16)
+* [Forking a Github repo to Bitbucket](https://gist.github.com/sangeeths/9467061)
