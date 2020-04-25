@@ -1,7 +1,7 @@
 # GitSemVerGradleVersionLabeler
 A simple Gradle based Semantic Versioning (2.0) facilitator via smart Git tagging.<BR/>
 
-![](https://www.google.com/url?sa=i&url=https%3A%2F%2Fblog.gopheracademy.com%2Fadvent-2015%2Fsemver%2F&psig=AOvVaw1-Y4JZ4DLGUJ4SoKrEnmM5&ust=1587893098935000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKjViv2gg-kCFQAAAAAdAAAAABAG)
+![](https://blog.donbowman.ca/wp-content/uploads/2019/01/img_5c2fbc5c6b904.png)
 
 __Two main Gradle plugins :electric_plug: are used to achieve this functionality:__
 - [Infer a project's version from your Git repository: org.ajoberstar.reckon](https://plugins.gradle.org/plugin/org.ajoberstar.reckon)
