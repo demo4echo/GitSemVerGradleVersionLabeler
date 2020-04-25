@@ -2,6 +2,7 @@
 A simple Gradle based Semantic Versioning (2.0) facilitator via smart Git tagging.<BR/>
 
 ![](https://blog.donbowman.ca/wp-content/uploads/2019/01/img_5c2fbc5c6b904.png)
+![](https://blog.gopheracademy.com/postimages/advent-2015/semver.png)
 
 __Two main Gradle plugins :electric_plug: are used to achieve this functionality:__
 - [Infer a project's version from your Git repository: org.ajoberstar.reckon](https://plugins.gradle.org/plugin/org.ajoberstar.reckon)
