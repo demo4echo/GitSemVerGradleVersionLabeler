@@ -43,9 +43,15 @@ reckon {
 }
 
 // Reckon helpers
-task printVersion
-task stampVersion(dependsOn: reckonTagCreate)
-task publishVersion(dependsOn: reckonTagPush)
+task printVersion {
+	description = "Printing the Reckoned version (no tagging)"
+}
+task stampVersion(dependsOn: reckonTagCreate) {
+	description = "A wrapper around the 'reckonTagCreate' task"
+}
+task publishVersion(dependsOn: reckonTagPush) {
+	description = "A wrapper around the 'reckonTagPush' task"
+}
 
 // These properties must be defined after the reckon plugin is set up!
 ext.originalProjectVersionObject = project.version
@@ -127,18 +133,26 @@ task gitPull {
 
 // Applicable version helpers
 task printApplicableVersion {
+	description = "Printing the relevant version (either the 'reckoned' one or a manual given one), handling insignificat versions as well"
+
 	doLast {
 		// Note: the word 'Main' must remain as the Pipeline is using this task and filters the output by this word!
 		println "Main version: ${productTag}"
 	}
 }
-task stampApplicableVersion(dependsOn: applicableTagCreate)
+task stampApplicableVersion(dependsOn: applicableTagCreate) {
+	description = "Marking (creating a local tag) of the relevant version (either the 'reckoned' one or a manual given one), handling insignificat versions as well"
+}
 task publishApplicableVersion(dependsOn: [stampApplicableVersion,gitPush]) {
+	description = "Marking (creating a local tag) and pushing to remote origin the relevant version (either the 'reckoned' one or a manual given one), handling insignificat versions as well"
+
 	gitPush.mustRunAfter stampApplicableVersion
 }
 
 // The most recent version that exists in the VCS (last generated tag)
 task printLatestVersion {
+	description = "Printing the most recent version in the repository"
+
 	doLast {
 		def latestTag = obtainLatestTag()
 		def latestTagName = latestTag.name
