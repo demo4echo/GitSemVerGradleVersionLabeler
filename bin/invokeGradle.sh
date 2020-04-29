@@ -17,7 +17,7 @@ SCRIPT_PATH=$(dirname "$SCRIPT")
 # Move to this script location
 cd "$SCRIPT_PATH"
 
-# Find the repo folder name
+# Find this repo folder name
 cd ..
 REPO_FOLDER_NAME=${PWD##*/}
 cd -
@@ -26,12 +26,12 @@ cd -
 REPO_COPY_DESIGNATED_FOLDER_NAME=`uuidgen`
 
 # Copt the repo and invoke the gradle wrapper from there
-cd ..
+cd ../..
 mkdir -p $REPO_COPY_DESIGNATED_FOLDER_NAME && rsync $REPO_FOLDER_NAME $REPO_COPY_DESIGNATED_FOLDER_NAME --exclude .git/ --exclude .gradle/ --exclude bin/ --exclude .gitattributes --exclude .gitignore
 cd $REPO_COPY_DESIGNATED_FOLDER_NAME
 ./gradlew $*
 cd -
-rm -rf ../$REPO_COPY_DESIGNATED_FOLDER_NAME
+rm -rf ../../$REPO_COPY_DESIGNATED_FOLDER_NAME
 
 # Return to the original location
 cd $ORIGINAL_PATH
