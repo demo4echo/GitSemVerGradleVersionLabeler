@@ -5,6 +5,9 @@
 # as in this case running the gradle wrapper (gradlew) from the root of the repo,
 # will cause all the git related operations (mainly tagging) to be performed on the sub module itself instead on the main (containing repo).
 #
+# NOTE:
+#	This requires adding the following line to the .gitignore of the main repo => f5070e59-ae9e-418e-bc53-f4080205c0ae/ (don't forget the trailing "/")
+#
 
 # Keep current location
 ORIGINAL_PATH=$PWD
@@ -33,8 +36,8 @@ rm -rf  $REPO_COPY_DESIGNATED_FOLDER_NAME/.git*  $REPO_COPY_DESIGNATED_FOLDER_NA
 #mkdir -p $REPO_COPY_DESIGNATED_FOLDER_NAME && rsync $REPO_FOLDER_NAME $REPO_COPY_DESIGNATED_FOLDER_NAME --exclude .git/ --exclude .gradle/ --exclude bin/ --exclude .gitattributes --exclude .gitignore
 
 # Make the working tree clean (for the Reckon plugin to work and produce significant versions)
-git add $REPO_COPY_DESIGNATED_FOLDER_NAME
-git commit -m "Temporary Update" $REPO_COPY_DESIGNATED_FOLDER_NAME
+#git add $REPO_COPY_DESIGNATED_FOLDER_NAME
+#git commit -m "Temporary Update" $REPO_COPY_DESIGNATED_FOLDER_NAME
 #git stash push $REPO_COPY_DESIGNATED_FOLDER_NAME
 
 # Invoke Gradle (under the main repo context)
@@ -44,8 +47,8 @@ cd -
 
 # Restore working tree and clean the temporary folder we have just created
 #git stash pop
-git reset --soft HEAD~
-git restore --staged $REPO_COPY_DESIGNATED_FOLDER_NAME
+#git reset --soft HEAD~
+#git restore --staged $REPO_COPY_DESIGNATED_FOLDER_NAME
 rm -rf $REPO_COPY_DESIGNATED_FOLDER_NAME
 
 # Return to the original location
