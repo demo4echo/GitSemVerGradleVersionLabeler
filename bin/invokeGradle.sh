@@ -28,11 +28,13 @@ REPO_COPY_DESIGNATED_FOLDER_NAME=f5070e59-ae9e-418e-bc53-f4080205c0ae
 
 # Copt the repo and invoke the gradle wrapper from there
 cd ../..
-mkdir -p $REPO_COPY_DESIGNATED_FOLDER_NAME && rsync $REPO_FOLDER_NAME $REPO_COPY_DESIGNATED_FOLDER_NAME --exclude .git/ --exclude .gradle/ --exclude bin/ --exclude .gitattributes --exclude .gitignore
+mkdir -p $REPO_COPY_DESIGNATED_FOLDER_NAME && cp -ra $REPO_FOLDER_NAME/. $REPO_COPY_DESIGNATED_FOLDER_NAME
+rm -rf  $REPO_COPY_DESIGNATED_FOLDER_NAME/.git*  $REPO_COPY_DESIGNATED_FOLDER_NAME/.gradle $REPO_COPY_DESIGNATED_FOLDER_NAME/bin
+#mkdir -p $REPO_COPY_DESIGNATED_FOLDER_NAME && rsync $REPO_FOLDER_NAME $REPO_COPY_DESIGNATED_FOLDER_NAME --exclude .git/ --exclude .gradle/ --exclude bin/ --exclude .gitattributes --exclude .gitignore
 cd $REPO_COPY_DESIGNATED_FOLDER_NAME
 ./gradlew $*
 cd -
-rm -rf ../../$REPO_COPY_DESIGNATED_FOLDER_NAME
+rm -rf $REPO_COPY_DESIGNATED_FOLDER_NAME
 
 # Return to the original location
-cd $ORIGINAL_PATH
+cd "$ORIGINAL_PATH"
