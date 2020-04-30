@@ -23,7 +23,8 @@ REPO_FOLDER_NAME=${PWD##*/}
 cd -
 
 # Generate a UUID and target folder name to copy this repo to
-REPO_COPY_DESIGNATED_FOLDER_NAME=`uuidgen`
+#REPO_COPY_DESIGNATED_FOLDER_NAME=`uuidgen`
+REPO_COPY_DESIGNATED_FOLDER_NAME=f5070e59-ae9e-418e-bc53-f4080205c0ae
 
 # Copt the repo and invoke the gradle wrapper from there
 cd ../..
