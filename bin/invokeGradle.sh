@@ -31,9 +31,19 @@ cd ../..
 mkdir -p $REPO_COPY_DESIGNATED_FOLDER_NAME && cp -ra $REPO_FOLDER_NAME/. $REPO_COPY_DESIGNATED_FOLDER_NAME
 rm -rf  $REPO_COPY_DESIGNATED_FOLDER_NAME/.git*  $REPO_COPY_DESIGNATED_FOLDER_NAME/.gradle $REPO_COPY_DESIGNATED_FOLDER_NAME/bin
 #mkdir -p $REPO_COPY_DESIGNATED_FOLDER_NAME && rsync $REPO_FOLDER_NAME $REPO_COPY_DESIGNATED_FOLDER_NAME --exclude .git/ --exclude .gradle/ --exclude bin/ --exclude .gitattributes --exclude .gitignore
+
+# Make the working tree clean (for the Reckon plugin to work and produce significant versions)
+git add $REPO_COPY_DESIGNATED_FOLDER_NAME
+git stash push $REPO_COPY_DESIGNATED_FOLDER_NAME
+
+# Invoke Gradle (under the main repo context)
 cd $REPO_COPY_DESIGNATED_FOLDER_NAME
 ./gradlew $*
 cd -
+
+# Restore working tree and clean the temporary folder we have just created
+git stash pop
+git restore --staged $REPO_COPY_DESIGNATED_FOLDER_NAME
 rm -rf $REPO_COPY_DESIGNATED_FOLDER_NAME
 
 # Return to the original location
