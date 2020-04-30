@@ -34,7 +34,8 @@ rm -rf  $REPO_COPY_DESIGNATED_FOLDER_NAME/.git*  $REPO_COPY_DESIGNATED_FOLDER_NA
 
 # Make the working tree clean (for the Reckon plugin to work and produce significant versions)
 git add $REPO_COPY_DESIGNATED_FOLDER_NAME
-git stash push $REPO_COPY_DESIGNATED_FOLDER_NAME
+git commit -m "Temporary Update" $REPO_COPY_DESIGNATED_FOLDER_NAME
+#git stash push $REPO_COPY_DESIGNATED_FOLDER_NAME
 
 # Invoke Gradle (under the main repo context)
 cd $REPO_COPY_DESIGNATED_FOLDER_NAME
@@ -42,7 +43,8 @@ cd $REPO_COPY_DESIGNATED_FOLDER_NAME
 cd -
 
 # Restore working tree and clean the temporary folder we have just created
-git stash pop
+#git stash pop
+git reset --soft HEAD~
 git restore --staged $REPO_COPY_DESIGNATED_FOLDER_NAME
 rm -rf $REPO_COPY_DESIGNATED_FOLDER_NAME
 
