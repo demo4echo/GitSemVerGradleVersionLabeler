@@ -27,7 +27,7 @@ __Two main Gradle plugins :electric_plug: are used to achieve this functionality
 2. Stamping (creating a local tag) an applicable version => `./gradlew stampApplicableVersion`
 	- With setting designated version tag and message => `./gradlew -Pdemo4echo.designatedTagName=9.9.9 -Pdemo4echo.designatedTagMessage="Version for Demo" stampApplicableVersion`
 3. Publishing (pushing a tag to remote repository) an applicable version => `./gradlew -Dorg.ajoberstar.grgit.auth.username=<ACCESS_TOKEN> publishApplicableVersion`
-	- With setting designated version tag and message => `./gradlew -Preckon.scope=minor -Pdemo4echo.designatedTagName=9.9.9 -Pdemo4echo.designatedTagMessage="Version for Demo" -Dorg.ajoberstar.grgit.auth.username=<ACCESS_TOKEN> publishApplicableVersion`
+	- With setting designated version tag and message => `./gradlew -Pdemo4echo.designatedTagName=9.9.9 -Pdemo4echo.designatedTagMessage="Version for Demo" -Dorg.ajoberstar.grgit.auth.username=<ACCESS_TOKEN> publishApplicableVersion`
 
 ### Recent Version:
 
