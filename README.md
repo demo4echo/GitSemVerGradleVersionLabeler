@@ -19,6 +19,7 @@ __Two main Gradle plugins :electric_plug: are used to achieve this functionality
 	- With setting Scope and Stage => `./gradlew -Preckon.scope=minor -Preckon.stage=rc stampVersion`
 3. Publishing (pushing a tag to remote repository) a calculated (<INS>**insignificant**</INS>) version (__since no scope nor stage were indicated__) => `./gradlew -Dorg.ajoberstar.grgit.auth.username=<ACCESS_TOKEN> publishVersion`
 	- With setting Scope and Stage => `./gradlew -Preckon.scope=minor -Preckon.stage=rc -Dorg.ajoberstar.grgit.auth.username=<ACCESS_TOKEN> publishVersion`
+4. If needed, an additional parameter can be used for authentication/authorization: `-			Dorg.ajoberstar.grgit.auth.password=<PASSWORD>, together with -Dorg.ajoberstar.grgit.auth.username=<USERNAME>`
 
 ### Applicable (*which takes into account both reckoned and designated flavored*) Version:
 
@@ -28,6 +29,7 @@ __Two main Gradle plugins :electric_plug: are used to achieve this functionality
 	- With setting designated version tag and message => `./gradlew -Pdemo4echo.designatedTagName=9.9.9 -Pdemo4echo.designatedTagMessage="Version for Demo" stampApplicableVersion`
 3. Publishing (pushing a tag to remote repository) an applicable version => `./gradlew -Dorg.ajoberstar.grgit.auth.username=<ACCESS_TOKEN> publishApplicableVersion`
 	- With setting designated version tag and message => `./gradlew -Pdemo4echo.designatedTagName=9.9.9 -Pdemo4echo.designatedTagMessage="Version for Demo" -Dorg.ajoberstar.grgit.auth.username=<ACCESS_TOKEN> publishApplicableVersion`
+4. If needed, an additional parameter can be used for authentication/authorization: `-Dorg.ajoberstar.grgit.auth.password=<PASSWORD>, together with -Dorg.ajoberstar.grgit.auth.username=<USERNAME>`
 
 ### Recent Version:
 
